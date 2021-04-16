@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lekker.PackageDeployer", "Lekker.PackageDeployer/Lekker.PackageDeployer.csproj", "{61E26E87-D86B-4695-BB38-C443DE9DEE18}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lekker.PackageDeployer.Core", "Lekker.PackageDeployer.Core\Lekker.PackageDeployer.Core.csproj", "{EAE89C2A-E659-42F6-9D8E-F765D5A8A2BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61E26E87-D86B-4695-BB38-C443DE9DEE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E26E87-D86B-4695-BB38-C443DE9DEE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E26E87-D86B-4695-BB38-C443DE9DEE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E26E87-D86B-4695-BB38-C443DE9DEE18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAE89C2A-E659-42F6-9D8E-F765D5A8A2BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAE89C2A-E659-42F6-9D8E-F765D5A8A2BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAE89C2A-E659-42F6-9D8E-F765D5A8A2BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAE89C2A-E659-42F6-9D8E-F765D5A8A2BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9974FA7-0828-4E01-8442-B34003F0E7F6}
+	EndGlobalSection
+EndGlobal

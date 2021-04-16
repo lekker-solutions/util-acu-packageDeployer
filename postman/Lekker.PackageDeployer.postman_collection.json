@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "f2ec429d-d13d-42be-b181-76d4cb3dea3a",
+		"name": "Lekker.PackageDeployer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/Deployment",
+			"item": [
+				{
+					"name": "Add a new Deployment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"runAt\": \"2021-04-16T024:015\",\n    \"steps\": [\n        {\n            \"operation\": \"login\",\n            \"order\": 1,\n            \"siteId\": 1\n        },\n        {\n            \"operation\": \"uploadPackage\",\n            \"order\": 2,\n            \"siteId\": 1,\n            \"packageId\": 1,\n            \"overwriteIfExists\": false\n        },\n        {\n            \"operation\": \"publish\",\n            \"order\": 3,\n            \"siteId\": 1,\n            \"packageNames\": [\n                \"\"\n            ],\n            \"overwriteIfExists\": false\n        }\n    ],\n    \"sites\": [\n        {\n            \"siteId\": 1,\n            \"url\": \"http://localhost/2020R2_1\",\n            \"password\": \"admin\",\n            \"username\": \"123456\"\n        }\n    ],\n    \"packages\": [\n        {\n            \"packageId\": 1,\n            \"packageName\": \"NewPackage\",\n            \"base64\": \"\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Deployment/new",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Deployment",
+								"new"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"runAt\": \"1975-07-17T21:18:40.912Z\",\n    \"id\": 32213345,\n    \"steps\": [\n        {\n            \"operation\": \"publish\",\n            \"order\": -26891796,\n            \"siteId\": -59121459,\n            \"publishPackageNames\": [\n                \"in in esse\",\n                \"dolore et\"\n            ],\n            \"mergePublish\": true,\n            \"packageId\": -2634556,\n            \"overwriteIfExists\": true\n        },\n        {\n            \"operation\": \"login\",\n            \"order\": -52662894,\n            \"siteId\": -38952895,\n            \"publishPackageNames\": [\n                \"do eiusmod Ut in\",\n                \"labore dolore do aliqua\"\n            ],\n            \"mergePublish\": false,\n            \"packageId\": -58605260,\n            \"overwriteIfExists\": true\n        }\n    ],\n    \"sites\": [\n        {\n            \"password\": \"ad\",\n            \"username\": \"quis consequat\",\n            \"siteId\": -4061620,\n            \"url\": \"ad anim in commodo\",\n            \"tenant\": \"ipsum ut\"\n        },\n        {\n            \"password\": \"qui labore\",\n            \"username\": \"velit ea\",\n            \"siteId\": -7139661,\n            \"url\": \"pariatur mollit\",\n            \"tenant\": \"qui sed in dolore\"\n        }\n    ],\n    \"packages\": [\n        {\n            \"base64\": \"minim\",\n            \"packageId\": 55800273,\n            \"packageName\": \"pariatur eiusmod dolor\"\n        },\n        {\n            \"base64\": \"Duis\",\n            \"packageId\": 9134795,\n            \"packageName\": \"enim qui\"\n        }\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Deployment/new",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Deployment",
+										"new"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Reschedule an Existing Deployment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"newRunAt\": \"1964-11-20T14:27:53.864Z\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Deployment/reschedule",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Deployment",
+								"reschedule"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 80021718,\n    \"newRunAt\": \"1964-11-20T14:27:53.864Z\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Deployment/reschedule",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Deployment",
+										"reschedule"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get a list of all queued deployments ordered by date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Deployment/queued",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Deployment",
+								"queued"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/Deployment/queued",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Deployment",
+										"queued"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get a list of all completed deployments ordered by date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Deployment/completed",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Deployment",
+								"completed"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/Deployment/completed",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Deployment",
+										"completed"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get a single deployment by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Deployment/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Deployment",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "64377772",
+									"description": "(Required) The ID of the deployment that was returned in the 'Add Deployment' call"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/Deployment/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Deployment",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Cancels a deployment by ID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/Deployment/cancel/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Deployment",
+								"cancel",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "-58163332",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/Deployment/cancel/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Deployment",
+										"cancel",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"id": "410b909b-bd79-43db-b585-a08a4e991d89",
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}

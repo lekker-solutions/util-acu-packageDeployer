@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "9939893f-b67f-4236-b6cb-a489c30475cf",
+		"name": "ServiceGate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "\"http://acumatica.com/Login\"",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n<soap:Body>\r\n<Login xmlns=\"http://acumatica.com\">\r\n<name>admin</name>\r\n<password>123456</password>\r\n</Login>\r\n</soap:Body>\r\n</soap:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseAcuUrl}}/api/servicegate.asmx",
+					"host": [
+						"{{baseAcuUrl}}"
+					],
+					"path": [
+						"api",
+						"servicegate.asmx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UploadPackage",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "\"http://acumatica.com/UploadPackage\"",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body>\r\n<UploadPackage xmlns=\"http://acumatica.com\">\r\n<packageName>DeployTest1</packageName>\r\n<packageContents>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</packageContents><replaceIfPackageExists>false</replaceIfPackageExists></UploadPackage></soap:Body></soap:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseAcuUrl}}/api/servicegate.asmx",
+					"host": [
+						"{{baseAcuUrl}}"
+					],
+					"path": [
+						"api",
+						"servicegate.asmx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UnpublishAll",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "\"http://acumatica.com/UnpublishAllPackages\"",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soap:Body>\r\n    <UnpublishAllPackages xmlns=\"http://acumatica.com\" />\r\n  </soap:Body>\r\n</soap:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/servicegate.asmx",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"servicegate.asmx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publish",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "\"http://acumatica.com/PublishPackages\"",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soap:Body>\r\n    <PublishPackages xmlns=\"http://acumatica.com\">\r\n      <packageNames>\r\n        <string>NNA_RecStatement</string>\r\n        <string>NNA_SubDescr</string>\r\n      </packageNames>\r\n      <mergeWithExistingPackages>true</mergeWithExistingPackages>\r\n    </PublishPackages>\r\n  </soap:Body>\r\n</soap:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/servicegate.asmx",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"servicegate.asmx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "\"http://acumatica.com/Logout\"",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n  <soap:Body>\r\n    <Logout xmlns=\"http://acumatica.com\" />\r\n  </soap:Body>\r\n</soap:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/servicegate.asmx",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"servicegate.asmx"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

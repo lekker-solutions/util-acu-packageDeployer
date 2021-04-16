@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Lekker.PackageDeployer</name>
+    </assembly>
+    <members>
+        <member name="T:Lekker.PackageDeployer.Adapter.DeploymentAdapter">
+            <summary>
+            Class that adapts the Deployment Request model to the Deployment Domain Model. Also provides Request model validation
+            </summary>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Adapter.DeploymentAdapter.AdaptRequestDeployment(Lekker.PackageDeployer.Models.Request.DeploymentRequest,System.Int32)">
+            <summary>
+            Adapt a request to the domain model
+            </summary>
+            <param name="request"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Adapter.DeploymentAdapter.AdaptDeploymentToRequest(Lekker.PackageDeployer.Core.Models.Deployment)">
+            <summary>
+            Adapts a domain model back to be returned from a controller
+            </summary>
+            <param name="deployment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Controllers.DeploymentController.AddNewDeployment(Lekker.PackageDeployer.Models.Request.DeploymentRequest)">
+            <summary>
+            Add a new Deployment
+            </summary>
+            <param name="request">A deployment to add to the queue</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Controllers.DeploymentController.RescheduleDeployment(Lekker.PackageDeployer.Models.Request.RescheduleRequest)">
+            <summary>
+            Reschedule an Existing Deployment
+            </summary>
+            <param name="request">The ID and new time that the deployment should be run</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Controllers.DeploymentController.GetQueuedDeployments">
+            <summary>
+            Get a list of all queued deployments ordered by date
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Controllers.DeploymentController.GetCompletedDeployments">
+            <summary>
+            Get a list of all completed deployments ordered by date
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Controllers.DeploymentController.GetDeployment(System.Int32)">
+            <summary>
+            Get a single deployment by ID
+            </summary>
+            <param name="id">The ID of the deployment that was returned in the 'Add Deployment' call</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Controllers.DeploymentController.CancelDeployment(System.Int32)">
+            <summary>
+            Cancels a deployment by ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lekker.PackageDeployer.Core.HostedService.DeploymentSchedulerService">
+            <summary>
+            The hosted service that runs the scheduled deployments
+            </summary>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Core.HostedService.DeploymentSchedulerService.AddDeploymentAsync(Lekker.PackageDeployer.Core.Models.Deployment)">
+            <summary>
+            Adds a new deployment to the stack and potentially resets the next deployment fields
+            </summary>
+            <param name="deployment"></param>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Core.HostedService.DeploymentSchedulerService.RescheduleDeploymentAsync(System.Int32,System.DateTime)">
+            <summary>
+            Changes the RunAt time for a deployment
+            </summary>
+            <param name="deploymentId">The ID of the deployment</param>
+            <param name="newRunat">The new time to run this</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Core.HostedService.DeploymentSchedulerService.CancelDeploymentAsync(System.Int32)">
+            <summary>
+            Cancels deployment and removes it from the queue
+            </summary>
+            <param name="deploymentId">The ID of the deployment</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Core.HostedService.DeploymentSchedulerService.GetNextDeploymentIDAsync">
+            <summary>
+            Gets the next deploymentID
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Core.HostedService.DeploymentSchedulerService.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            Used by the ASP.Net Framework only
+            </summary>
+        </member>
+        <member name="M:Lekker.PackageDeployer.Core.HostedService.DeploymentSchedulerService.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            Used by the ASP.Net Framework only
+            </summary>
+        </member>
+        <member name="T:Lekker.PackageDeployer.Models.Request.DeploymentRequest">
+            <summary>
+            Class that represents Deserialized Json from the web request
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.DeploymentRequest.Id">
+            <summary>
+            The ID of the deployment, returned by the server
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.DeploymentRequest.Steps">
+            <summary>
+            The steps in the deployment: Upload, publish, unpublish
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.DeploymentRequest.Sites">
+            <summary>
+            The websites associated with the steps
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.DeploymentRequest.Packages">
+            <summary>
+            The packages associated with the upload steps
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.DeploymentRequest.RunDate">
+            <summary>
+            The Date/Time in which the deployment will be run
+            </summary>
+        </member>
+        <member name="T:Lekker.PackageDeployer.Models.Request.Package">
+            <summary>
+            A single customization package. Allows for the same package to be deployed to multiple sites without copying the base64 in the request
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.RescheduleRequest.Id">
+            <summary>
+            The ID of the Generated Deployment Request
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.RescheduleRequest.NewScheduledDateTime">
+            <summary>
+            The new time that you want to run the deployment at
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.Site.Url">
+            <summary>
+            The base instance URL of the Acumatica instance to deploy to
+            </summary>
+                    [JsonPropertyName("url")]
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.Step.Operation">
+            <summary>
+            The Operation to be performed
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.Step.Order">
+            <summary>
+            The order of operation within a site
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.Step.SiteId">
+            <summary>
+            The site in which a cluster of steps is associated with
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.Step.PublishPackageNames">
+            <summary>
+            The names of the Packages to be published
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.Step.MergePublishWithExistingPackages">
+            <summary>
+            Whether to publish the specified packages along with existing packages on the system
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.Step.PackageId">
+            <summary>
+            The id of the package to be uploaded
+            </summary>
+        </member>
+        <member name="P:Lekker.PackageDeployer.Models.Request.Step.OverwriteExistingPackage">
+            <summary>
+            Whether to overwrite an existing customization project with the same name as the specified name in 'PackageName'
+            </summary>
+        </member>
+        <member name="T:Lekker.PackageDeployer.Models.Response.BaseResponse">
+            <summary>
+            The base response class always returned by the controller, with json data 
+            </summary>
+        </member>
+    </members>
+</doc>

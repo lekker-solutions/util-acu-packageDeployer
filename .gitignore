@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+src/Lekker.PackageDeployer.Core/obj
+src/Lekker.PackageDeployer.Core/bin
+src/Lekker.PackageDeployer/bin
+src/Lekker.PackageDeployer/obj
+/.vs
+
+
